@@ -50,7 +50,7 @@ function displayBrushSize() {
 brushSlider.addEventListener('input', () => {
     currentSize = brushSlider.value;
     displayBrushSize();
-    console.log('a')
+    // console.log('a')
 });
 
 // Setting Brush Color
@@ -142,7 +142,7 @@ function storeDrawn(x, y, size, color, erase) {
     color,
     erase,
   };
-  console.log(line);
+  // console.log(line);
   drawnArray.push(line);
 }
 
@@ -189,7 +189,7 @@ canvas.addEventListener('mousemove', (event) => {
 // Mouse Up
 canvas.addEventListener('mouseup', () => {
   isMouseDown = false;
-  console.log('mouse is unclicked');
+  // console.log('mouse is unclicked');
 });
 
 // Save to Local Storage
@@ -229,7 +229,7 @@ clearStorageBtn.addEventListener('click', () => {
 // Download Image
 downloadBtn.addEventListener('click', () => {
   downloadBtn.href = canvas.toDataURL('image/jpeg',1);
-console.log(downloadBtn.href);  
+// console.log(downloadBtn.href);  
   downloadBtn.download = 'paint-example.jpeg';
 
   // Active Tool

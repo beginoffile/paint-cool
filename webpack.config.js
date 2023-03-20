@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const WebpackPwaManifest = require('webpack-pwa-manifest');
+
    
 module.exports = (env, argv) =>{
     
@@ -103,29 +103,7 @@ module.exports = (env, argv) =>{
     
         plugins: [
 
-            new WebpackPwaManifest({
-                name: 'Nombre de la App',
-                short_name: 'App',
-                description: 'App Template',
-                theme_color: '#8C54A4',
-                background_color: '#8C54A4',
-                display: 'standalone',
-                dir:'',
-                inject:true,
-                start_url: '/',
-                publicPath: '/',                
-                includeDirectory: false,
-                fingerprints: true,
-                crossorigin: null,                
-                // crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
-                icons: [
-                  {
-                    src: path.resolve('src/assets/iconos/javascript.png'),
-                    sizes: [72, 96, 128, 144, 152, 192, 384, 512] // multiple sizes
-                  },
-                 
-                ]
-              }),
+            
 
             new HtmlWebpackPlugin({
                 title: 'Mi Webpack App',
@@ -251,29 +229,7 @@ module.exports = (env, argv) =>{
     
         plugins: [
 
-            new WebpackPwaManifest({
-                name: 'Nombre de la App',
-                short_name: 'App',
-                description: 'App Template',
-                theme_color: '#8C54A4',
-                background_color: '#8C54A4',
-                display: 'standalone',
-                dir:'',
-                inject:true,
-                start_url: '/',
-                publicPath: '/',                
-                includeDirectory: false,
-                fingerprints: true,
-                crossorigin: null,                
-                // crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
-                icons: [
-                  {
-                    src: path.resolve('src/assets/iconos/javascript.png'),
-                    sizes: [72, 96, 128, 144, 152, 192, 384, 512] // multiple sizes
-                  },
-                 
-                ]
-            }),
+            
 
             new HtmlWebpackPlugin({
                 title: 'Mi Webpack App',

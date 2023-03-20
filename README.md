@@ -1,4 +1,4 @@
-#Paint cool
+# Paint cool
 
 To run the project:
 ```
