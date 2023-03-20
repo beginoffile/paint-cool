@@ -16,6 +16,7 @@ const loadStorageBtn = document.getElementById('load-storage');
 const clearStorageBtn = document.getElementById('clear-storage');
 const downloadBtn = document.getElementById('download');
 const { body } = document;
+const BRUSH_TIME = 1500;
 
 // Global Variables
 
@@ -23,12 +24,17 @@ const canvas = document.createElement('canvas');
 canvas.id = 'canvas';
 const context = canvas.getContext('2d');
 
+
 let currentSize = 10;
 let bucketColor = '#FFFFFF';
 let currentColor = '#A51DAB';
 let isEraser = false;
 let isMouseDown = false;
 let drawnArray = [];
+
+function brushTimeSetTimeout(){
+  setTimeout(switchToBrush, BRUSH_TIME);  
+}
 
 // Formatting Brush Size
 function displayBrushSize() {
@@ -95,13 +101,19 @@ function createCanvas() {
 
 }
 
-// Clear Canvas
-clearCanvasBtn.addEventListener('click', () => {
+function clearCanvas(){
   createCanvas();
   drawnArray = [];
+}
+
+// Clear Canvas
+clearCanvasBtn.addEventListener('click', () => {
+  // createCanvas();
+  // drawnArray = [];
+  clearCanvas();
   // Active Tool
   activeToolEl.textContent = 'Canvas Cleared';
-  setTimeout(switchToBrush, 1500);
+  brushTimeSetTimeout();
 });
 
 // Draw what is stored in DrawnArray
@@ -186,14 +198,14 @@ saveStorageBtn.addEventListener('click', () => {
 
   // Active Tool
   activeToolEl.textContent = 'Canvas Saved';
-  setTimeout(switchToBrush, 1500);
+  brushTimeSetTimeout();
 });
 
 // Load from Local Storage
 loadStorageBtn.addEventListener('click', () => {
+  clearCanvas();
   if (localStorage.getItem('savedCanvas')) {
-    drawnArray = JSON.parse(localStorage.savedCanvas);
-    
+    drawnArray = JSON.parse(localStorage.savedCanvas);    
     restoreCanvas();
 
   // Active Tool
@@ -201,7 +213,7 @@ loadStorageBtn.addEventListener('click', () => {
   } else {
     activeToolEl.textContent = 'No canvas Found';
   }
-  setTimeout(switchToBrush, 1500);
+  brushTimeSetTimeout();
 
 });
 
@@ -211,7 +223,7 @@ clearStorageBtn.addEventListener('click', () => {
 
   // Active Tool
   activeToolEl.textContent = 'Local Storage Cleared';
-  setTimeout(switchToBrush, 1500);
+  brushTimeSetTimeout();
 });
 
 // Download Image
@@ -222,7 +234,7 @@ console.log(downloadBtn.href);
 
   // Active Tool
   activeToolEl.textContent = 'Image File Saved';
-  setTimeout(switchToBrush, 1500);
+  brushTimeSetTimeout();  
 });
 
 // // Event Listener
